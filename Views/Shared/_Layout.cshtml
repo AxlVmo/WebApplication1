@@ -283,7 +283,7 @@
                                 <a role="menuitem" tabindex="-1" href="#" data-lock-screen="true"><i
                                         class="fa fa-lock"></i> Lock Screen</a>
                             </li>
-                             <li>
+                            <li>
                                 <a role="menuitem" tabindex="-1" asp-area="Identity" asp-page="/Account/Register"><i
                                         class="fa fa-lock"></i> Registrar</a>
                             </li>
@@ -1125,7 +1125,7 @@
 
     <!-- Examples -->
     <script src="/template/assets/javascripts/dashboard/examples.landing.dashboard.js"></script>
-
+    @await Component.InvokeAsync("Notyf");
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 
