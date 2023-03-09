@@ -1,0 +1,65 @@
+﻿@page
+@model RegisterModel
+
+<!-- start: page -->
+<section class="body-sign">
+    <div class="center-sign">
+        <a href="/" class="logo pull-left">
+            <img src="assets/images/logo.png" height="54" alt="logo_registro" />
+        </a>
+        <div class="panel panel-sign">
+            <div class="panel-title-sign mt-xl text-right">
+                <h2 class="title text-uppercase text-weight-bold m-none"><i class="fa fa-user mr-xs"></i>Registrarse
+                </h2>
+            </div>
+            <div class="panel-body">
+                <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div class="form-group mb-lg">
+                        <labe asp-for="Input.Email" l>Correo electrónico</labe>
+                        <input name="email" type="email" class="form-control input-lg" asp-for="Input.Email"
+                            autocomplete="username" />
+                    </div>
+                    <div class="form-group mb-none">
+                        <div class="row">
+                            <div class="col-sm-6 mb-lg">
+                                <label asp-for="Input.Password">Contraseña</label>
+                                <input name="pwd" type="password" class="form-control input-lg" asp-for="Input.Password"
+                                    autocomplete="new-password" />
+                            </div>
+                            <div class="col-sm-6 mb-lg">
+                                <label asp-for="Input.ConfirmPassword">Confirmación de contraseña</label>
+                                <input name="pwd_confirm" type="password" class="form-control input-lg"
+                                    asp-for="Input.ConfirmPassword" autocomplete="new-password" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="checkbox-custom checkbox-default">
+                                <input id="AgreeTerms" name="agreeterms" type="checkbox" />
+                                <label for="AgreeTerms">Estoy de acuerdo con los <a href="#">términos de uso</a></label>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 text-right">
+                            <button id="registerSubmit" type="submit"
+                                class="btn btn-primary hidden-xs">Registrar</button>
+                            <button id="registerSubmit" type="submit"
+                                class="btn btn-primary btn-block btn-lg visible-xs mt-lg">Registrar</button>
+                        </div>
+                    </div>
+                    <span class="mt-lg mb-lg line-thru text-center text-uppercase">
+                        <span>o</span>
+                    </span>
+                    <p class="text-center">¿Ya tienes una cuenta? <a asp-area="Identity"
+                            asp-page="/Account/Login">¡Iniciar sesión!</a></p>
+                </form>
+            </div>
+        </div>
+        <p class="text-center text-muted mt-md mb-md">&copy; Copyright 2023. All Rights Reserved.</p>
+    </div>
+</section>
+<!-- end: page -->
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
