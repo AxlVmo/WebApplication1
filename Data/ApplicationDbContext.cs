@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Areas.Address.Models;
+using Identity.Models;
+using WebAppAdmin.Areas.Address.Models;
 
 namespace WebApplication1.Data
 {
@@ -11,7 +13,8 @@ namespace WebApplication1.Data
         {
         }
 
-        public DbSet<cat_codigo_postal> cat_codigos_postales { get; set; }
+        public DbSet<Identity.Models.usuario> User { get; set; } = default!;
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -1538,6 +1541,6 @@ new cat_codigo_postal { id_codigo_postal = 1516, d_codigo = "16900", d_asenta = 
 
             base.OnModelCreating(modelBuilder);
         }
+
     }
 }
-

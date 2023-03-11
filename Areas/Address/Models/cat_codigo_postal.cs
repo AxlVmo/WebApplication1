@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApplication1.Areas.Address.Models
@@ -8,51 +8,52 @@ namespace WebApplication1.Areas.Address.Models
         [Key]
         [Column("id_codigo_postal")]
         [Display(Name = "ID IdCodigo Postal")]
-        public int id_codigo_postal { get; set; }
+        [Required]
+        public System.Nullable<System.Int32> id_codigo_postal { get; set; }
 
-        [DataType(DataType.Text)]
-        public string? d_codigo { get; set; }
+        [Required]
+        public string d_codigo { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? d_asenta { get; set; }
+        [Required]
+        public string d_asenta { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? d_tipoAsenta { get; set; }
+        [Required]
+        public string d_tipoAsenta { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? d_mnpio { get; set; }
+        [Required]
+        public string d_mnpio { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? d_estado { get; set; }
+        [Required]
+        public string d_estado { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? d_ciudad { get; set; }
+        [Required]
+        public string d_ciudad { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? d_cp { get; set; }
+        [Required]
+        public string d_cp { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? c_estado { get; set; }
+        [Required]
+        public string c_estado { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? c_oficina { get; set; }
+        [Required]
+        public string c_oficina { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? c_cp { get; set; }
+        [Required]
+        public string c_cp { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? c_tipoAsenta { get; set; }
+        [Required]
+        public string c_tipoAsenta { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? c_mnpio { get; set; }
+        [Required]
+        public string c_mnpio { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? id_asenta_cpcons { get; set; }
+        [Required]
+        public string id_asenta_cpcons { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? d_zona { get; set; }
+        [Required]
+        public string d_zona { get; set; } = string.Empty;
 
-        [DataType(DataType.Text)]
-        public string? c_cveCiudad { get; set; }
+        [Required]
+        public string c_cveCiudad { get; set; } = string.Empty;
     }
 }

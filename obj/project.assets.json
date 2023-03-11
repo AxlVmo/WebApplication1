@@ -11181,24 +11181,32 @@
     ]
   },
   "packageFolders": {
-    "/home/axl/.nuget/packages/": {}
+    "C:\\Users\\axl\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/axl/dev_source/dev_net_core/WebApplication1/WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "/home/axl/dev_source/dev_net_core/WebApplication1/WebApplication1.csproj",
-      "packagesPath": "/home/axl/.nuget/packages/",
-      "outputPath": "/home/axl/dev_source/dev_net_core/WebApplication1/obj/",
+      "projectUniqueName": "C:\\dev_source\\dev_net_core\\WebApplication1\\WebAppAdmin.csproj",
+      "projectName": "WebAppAdmin",
+      "projectPath": "C:\\dev_source\\dev_net_core\\WebApplication1\\WebAppAdmin.csproj",
+      "packagesPath": "C:\\Users\\axl\\.nuget\\packages\\",
+      "outputPath": "C:\\dev_source\\dev_net_core\\WebApplication1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/home/axl/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\axl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -11206,11 +11214,6 @@
           "targetAlias": "net7.0",
           "projectReferences": {}
         }
-      },
-      "warningProperties": {
-        "warnAsError": [
-          "NU1605"
-        ]
       }
     },
     "frameworks": {
@@ -11269,7 +11272,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

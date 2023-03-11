@@ -8,7 +8,7 @@ using WebApplication1.Data;
 
 #nullable disable
 
-namespace WebApplication1.Migrations
+namespace WebAppAdmin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -21,6 +21,28 @@ namespace WebApplication1.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Identity.Models.usuario", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("User");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -222,58 +244,137 @@ namespace WebApplication1.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("WebAppAdmin.Areas.Address.Models.usuario_control", b =>
+                {
+                    b.Property<Guid>("id_usuario_control")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("apellido_materno")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("apellido_paterno")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("correo_acceso")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("fecha_actualizacion")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("fecha_nacimiento")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime>("fecha_registro")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("id_area")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("id_estatus_registro")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("id_genero")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("id_perfil")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("id_rol")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("id_usuario_modifico")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("nombre_usuario")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("nombres")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<byte[]>("profile_picture")
+                        .HasColumnType("bytea");
+
+                    b.Property<bool>("terminos_uso")
+                        .HasColumnType("boolean");
+
+                    b.HasKey("id_usuario_control");
+
+                    b.ToTable("usuarios_controles");
+                });
+
             modelBuilder.Entity("WebApplication1.Areas.Address.Models.cat_codigo_postal", b =>
                 {
-                    b.Property<int>("id_codigo_postal")
+                    b.Property<int?>("id_codigo_postal")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id_codigo_postal");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id_codigo_postal"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("id_codigo_postal"));
 
                     b.Property<string>("c_cp")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("c_cveCiudad")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("c_estado")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("c_mnpio")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("c_oficina")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("c_tipoAsenta")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_asenta")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_ciudad")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_codigo")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_cp")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_estado")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_mnpio")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_tipoAsenta")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("d_zona")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("id_asenta_cpcons")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("id_codigo_postal");

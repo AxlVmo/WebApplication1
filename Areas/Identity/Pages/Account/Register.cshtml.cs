@@ -18,7 +18,10 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using WebAppAdmin.Areas.Address.Models;
+using WebApplication1.Data;
 
 namespace WebApplication1.Areas.Identity.Pages.Account
 {
@@ -31,6 +34,7 @@ namespace WebApplication1.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly INotyfService _toastNotification;
+        private readonly ApplicationDbContext _context;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -38,6 +42,7 @@ namespace WebApplication1.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
+                 ApplicationDbContext context,
             INotyfService toastNotification)
         {
             _userManager = userManager;
@@ -47,6 +52,7 @@ namespace WebApplication1.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _toastNotification = toastNotification;
+            _context = context;
         }
 
         /// <summary>
@@ -114,7 +120,22 @@ namespace WebApplication1.Areas.Identity.Pages.Account
                 }
                 else
                 {
+
                     var user = CreateUser();
+
+                    var addUsuarios = new usuario_control
+                    {
+                        id_usuario_control = Guid.Parse(user.Id),
+                        id_usuario_modifico = Guid.Empty,
+                        correo_acceso = user.Email,
+                        nombre_usuario = user.UserName,
+                        id_area = 1,
+                        id_perfil = 1,
+                        id_rol = 1,
+                        id_estatus_registro = 1
+                    };
+                    _context.Add(addUsuarios);
+                    await _context.SaveChangesAsync();
 
                     await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                     await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -143,6 +164,31 @@ namespace WebApplication1.Areas.Identity.Pages.Account
                         {
                             await _signInManager.SignInAsync(user, isPersistent: false);
                             return LocalRedirect(returnUrl);
+                        }
+                    }
+                    else
+                    {
+                        var list_err = result.Errors.ToList();
+                        string msj_err = null;
+
+                        foreach (var item in list_err)
+                        {
+                            if (item.Description == "Passwords must have at least one uppercase ('A'-'Z').")
+                            {
+                                msj_err = "Las contraseñas deben tener al menos una letra mayúscula (A-Z)";
+                                _toastNotification.Warning(msj_err, 5);
+                            }
+                            if (item.Description == "Passwords must have at least one non alphanumeric character.")
+                            {
+                                msj_err = "Las contraseñas deben tener al menos un carácter no alfanumérico";
+                                _toastNotification.Warning(msj_err, 5);
+                            }
+                            if (item.Code == "DuplicateUserName")
+                            {
+                                msj_err = "El nombre de usuario ya está en uso";
+                                _toastNotification.Warning(msj_err, 5);
+                            }
+
                         }
                     }
                 }
